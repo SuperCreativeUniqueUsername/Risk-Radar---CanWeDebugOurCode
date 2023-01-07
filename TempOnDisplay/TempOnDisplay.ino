@@ -31,7 +31,7 @@ void loop()
   DHT.read11(dht_pin);
   lcd.setCursor(0, 0);
   lcd.print("Hum = ");
-  lcd.print(DHT.humidity);
+  lcd.print((int)DHT.humidity);
   lcd.print("%");
 
   // set the cursor to column 0, line 1
@@ -39,8 +39,8 @@ void loop()
   lcd.setCursor(0, 1);
   // Print a message to the LCD.
   lcd.print("Temp = ");
-  lcd.print(DHT.temperature); 
-  lcd.print("C");
-  delay(1000);
+  lcd.print((int)DHT.temperature); 
+  lcd.print(" C");
+  delay(5000);
   lcd.clear();
 }
