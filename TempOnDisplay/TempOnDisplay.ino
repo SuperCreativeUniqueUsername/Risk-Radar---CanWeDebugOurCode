@@ -19,9 +19,10 @@ void setup()
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("DHT11 Humidity");
+  //lcd.autoscroll();
   lcd.setCursor(0, 1);
   lcd.print("& temp Sensor");
-  delay(4000);
+  delay(8000);
   lcd.clear();
 }
 
@@ -43,4 +44,5 @@ void loop()
   lcd.print(" C");
   delay(5000);
   lcd.clear();
+  
 }
