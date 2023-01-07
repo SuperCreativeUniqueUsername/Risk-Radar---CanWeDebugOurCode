@@ -1,3 +1,5 @@
+#include <dht.h>
+
 /* 
    DHT11 Temperature and Humidity Sensor With Arduino
    For more details, visit: https://techzeero.com/arduino-tutorials/dht11-with-arduino/
@@ -8,7 +10,7 @@ int Analog_In = A1; // Analog output of the sensor
 int Digital_Input = 3; // Digital output of the sensor
 // microphone 2
 int Analog_In2 = A2;
-int Digital_Input2 = 4
+int Digital_Input2 = 4;
 
 // stuff for humidity and temp sensor
 #include <dht.h>
@@ -61,8 +63,8 @@ void loop()
   Digital2 = digitalRead(Digital_Input2);
     
   //...  and issued at this point
-  Serial.print("Analog voltage value:");  Serial.print(Analog,  4) ;   Serial.print("V, ");
-  Serial.print("Limit value:") ;
+  Serial.print("Analog voltage value 1:");  Serial.print(Analog,  4) ;   Serial.print("V, ");
+  Serial.print("Limit value 1:") ;
   
   if (Digital==1) 
   {
@@ -72,6 +74,18 @@ void loop()
   {
     Serial.println(" not yet reached");
   }
+
+  Serial.print("Analog voltage value 2:"); Serial.print(Analog2, 4); Serial.print("V,  ");
+  Serial.print("Limit value 2:");
+  if (Digital2==1) 
+  {
+    Serial.println("reached");
+  }
+  else
+  {
+    Serial.println(" not yet reached");
+  }
+
   Serial.println("----------------------------------------------------------------") ;
   delay(2000) ;
 }
