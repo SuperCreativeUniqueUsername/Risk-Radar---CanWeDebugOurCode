@@ -11,6 +11,8 @@ int Digital_Input = 3; // Digital output of the sensor
 // microphone 2
 int Analog_In2 = A2;
 int Digital_Input2 = 4;
+// button
+int Digital_Input3 = 2;
 
 // stuff for humidity and temp sensor
 #include <dht.h>
@@ -33,6 +35,8 @@ void setup()
   //microphone 2
   pinMode(Analog_In2, INPUT);
   pinMode(Digital_Input2, INPUT);
+  // button
+  pinMode(Digital_Input3, INPUT);
 }
  
 void loop()
@@ -55,15 +59,19 @@ void loop()
   // microphone 2
   float Analog2;
   int Digital2;
+  // button
+  int Digital3;  
     
   //Current values are read out, converted to the voltage value...
-  Analog =  analogRead(Analog_In)  *  (5.0 / 1023.0);
+  Analog =  analogRead(Analog_In);
   Digital = digitalRead(Digital_Input);
-  Analog2 = analogRead(Analog_In2) * (5.0/1023.0);
+  Analog2 = analogRead(Analog_In2);
   Digital2 = digitalRead(Digital_Input2);
-    
+  Digital3 = digitalRead(Digital_Input3);
+  
+  Serial.print("button pressed:"); Serial.println(Digital3);
   //...  and issued at this point
-  Serial.print("Analog voltage value 1:");  Serial.print(Analog,  4) ;   Serial.print("V, ");
+  Serial.print("Analog voltage value 1:");  Serial.print(Analog,  4) ;   Serial.print(", ");
   Serial.print("Limit value 1:") ;
   
   if (Digital==1) 
@@ -75,7 +83,7 @@ void loop()
     Serial.println(" not yet reached");
   }
 
-  Serial.print("Analog voltage value 2:"); Serial.print(Analog2, 4); Serial.print("V,  ");
+  Serial.print("Analog voltage value 2:"); Serial.print(Analog2, 4); Serial.print(",  ");
   Serial.print("Limit value 2:");
   if (Digital2==1) 
   {
