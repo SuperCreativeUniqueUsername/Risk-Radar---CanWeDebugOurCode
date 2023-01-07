@@ -2,6 +2,7 @@
 //Test code to get things working copied from https://lastminuteengineers.com/arduino-1602-character-lcd-tutorial/
 #include <LiquidCrystal.h>
 #include <dht.h>
+dht DHT;
 
 // Creates an LCD object. Parameters: (rs, enable, d4, d5, d6, d7)
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
@@ -16,23 +17,30 @@ void setup()
 
   // Clears the LCD screen
   lcd.clear();
-  lcd.print("DHT11 Humidity & temperature Sensor\n\n");
-  delay(1000);
+  lcd.setCursor(0, 0);
+  lcd.print("DHT11 Humidity");
+  lcd.setCursor(0, 1);
+  lcd.print("& temp Sensor");
+  delay(4000);
+  lcd.clear();
 }
 
 void loop() 
 {
   // Print a message to the LCD.
+  DHT.read11(dht_pin);
   lcd.setCursor(0, 0);
-  lcd.print("Humidity = ");
+  lcd.print("Hum = ");
   lcd.print(DHT.humidity);
-  lcd.print("%    ");
+  lcd.print("%");
 
   // set the cursor to column 0, line 1
   // (note: line 1 is the second row, since counting begins with 0):
   lcd.setCursor(0, 1);
   // Print a message to the LCD.
-  lcd.print("Temperature = ");
+  lcd.print("Temp = ");
   lcd.print(DHT.temperature); 
-  lcd.println(" C");
+  lcd.print("C");
+  delay(1000);
+  lcd.clear();
 }
