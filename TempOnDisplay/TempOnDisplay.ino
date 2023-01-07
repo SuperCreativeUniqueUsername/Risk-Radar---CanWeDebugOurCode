@@ -35,8 +35,6 @@ void loop()
   lcd.print((int)DHT.humidity);
   lcd.print("%");
 
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
   lcd.setCursor(0, 1);
   // Print a message to the LCD.
   lcd.print("Temp = ");
@@ -44,5 +42,4 @@ void loop()
   lcd.print(" C");
   delay(5000);
   lcd.clear();
-  
 }
