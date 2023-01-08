@@ -127,8 +127,12 @@ void main1() // runs every 100 milliseconds exactly
 {
   loop_counter += 1; // unused?
   if (millis() - current_display_millis >= display_millis) {
+    Serial.print(millis() - current_display_millis);
+    Serial.print(" here\n");
     current_display_millis += display_millis;
     current_display += 1;
+    Serial.print(millis() - current_display_millis);
+    Serial.print(" here\n");
     Serial.print("1\n");
     if (current_display > current_display_max) {
       current_display = 1; // skip intro screen
