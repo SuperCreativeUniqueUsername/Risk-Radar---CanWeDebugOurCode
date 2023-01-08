@@ -114,13 +114,13 @@ void main1() // runs every 100 milliseconds exactly
       current_display = 1; // skip intro screen
     }
     if (current_display == 0) {
-      DisplayIntro(); // Griffin make this
+      DisplayIntro();
     }
     else if (current_display == 1) {
       DisplayTemp();
     }
     else if (current_display == 2) {
-      DisplayMic(); // Griffin make this
+      DisplayMic();
     }
   }
   mic1 = get_microphone_1_boolean();
@@ -132,9 +132,7 @@ void main1() // runs every 100 milliseconds exactly
     current_display_millis += display_millis;
   }
   if (count_in_array(mic2_array, 1) >= 10000) {
-    DisplayMic()
+    DisplayMic();
     current_display_millis += display_millis;
   }
-
-  //loop a few times getting mic data each time
 }
