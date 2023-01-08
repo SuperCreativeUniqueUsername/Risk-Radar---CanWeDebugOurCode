@@ -1,5 +1,6 @@
 #include <LiquidCrystal.h>
 #include <dht.h>
+#include <vector>
 
 #define dht_pin A0
 

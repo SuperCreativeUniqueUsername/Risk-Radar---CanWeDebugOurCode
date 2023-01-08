@@ -1,4 +1,3 @@
-#include <dht.h>
 
 /* 
    DHT11 Temperature and Humidity Sensor With Arduino
@@ -7,15 +6,16 @@
 
 // Declaration and initialization of input pins for microphone 1
 int Analog_In = A1; // Analog output of the sensor
-int Digital_Input = 3; // Digital output of the sensor
 // microphone 2
 int Analog_In2 = A2;
-int Digital_Input2 = 4;
+int Digital_Input_mic1 = 7; // Digital output of the sensor
+int Digital_Input_mic2 = 8;
 // button
 int Digital_Input3 = 2;
 
 // stuff for humidity and temp sensor
 #include <dht.h>
+#include <vector>
 
 #define dht_pin A0     // Analog Pin A0 of Arduino is connected to DHT11 out pin
  
@@ -30,11 +30,9 @@ void setup()
   delay(1000);
 
   // microphone 1
-  pinMode(Analog_In, INPUT);
-  pinMode(Digital_Input, INPUT);
+  pinMode(Digital_Input_mic1, INPUT);
   //microphone 2
-  pinMode(Analog_In2, INPUT);
-  pinMode(Digital_Input2, INPUT);
+  pinMode(Digital_Input_mic2, INPUT);
   // button
   pinMode(Digital_Input3, INPUT);
 }
@@ -60,7 +58,7 @@ void loop()
   float Analog2;
   int Digital2;
   // button
-  int Digital3;  
+  int Digital3;
     
   //Current values are read out, converted to the voltage value...
   Analog =  analogRead(Analog_In);
@@ -95,5 +93,17 @@ void loop()
   }
 
   Serial.println("----------------------------------------------------------------") ;
-  delay(2000) ;
+  delay(100) ;
+}
+
+bool get_microphone_1_boolean() {
+  bool mic1
+  mic1 = (bool)digitalRead(Digital_Input_mic1)
+  return mic1
+}
+
+bool get_microphone_2_boolean() {
+  bool mic2
+  mic2 = (bool)digitalRead(Digital_Input_mic2)
+  return mic2
 }
