@@ -17,9 +17,6 @@ int Digital_Input_mic2 = 8;
 
 int loop_counter = 0;
 
-
-
-
 void DisplayTemp(){
   
   DHT.read11(dht_pin);
