@@ -10,9 +10,9 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 int loop_counter = 0;
-bool mic1_array[6000]; // 60 seconds
+bool mic1_array[600]; // 6 seconds
 int mic1_index = 0;
-bool mic2_array[30000]; // 300 seconds
+bool mic2_array[1000]; // 10 seconds
 int mic2_index = 0;
 int last_millis = millis();
 bool mic1;
@@ -33,7 +33,7 @@ void DisplayIntro(){
   lcd.setCursor(0, 0);
   lcd.print("Made By Aiden,");
   lcd.setCursor(0, 1);
-  lcd.print("Cedric and Griffin")
+  lcd.print("Cedric and Griffin");
   delay(1500);
   lcd.scrollDisplayRight();
   delay(500);
@@ -136,7 +136,7 @@ void main1() // runs every 100 milliseconds exactly
       DisplayTemp();
     }
     else if (current_display == 2) {
-      DisplaySound();
+      DisplaySound(mic1, mic2);
     }
   }
   mic1 = get_microphone_1_boolean();
@@ -144,11 +144,11 @@ void main1() // runs every 100 milliseconds exactly
   mic1_array[mic1_index] = mic1;
   mic2_array[mic2_index] = mic2;
   if (count_in_array(mic1_array, 1) >= 2) { // high dB warning after 2 polls
-    DisplaySound();
+    DisplaySound(mic1, mic2);
     current_display_millis += display_millis;
   }
-  if (count_in_array(mic2_array, 1) >= 10000) { // lower dB warning after 1/3 of the time of 5 minutes polls
-    DisplaySound();
+  if (count_in_array(mic2_array, 1) >= 300) { // lower dB warning after 1/3 of the time of 5 minutes polls
+    DisplaySound(mic1, mic2);
     current_display_millis += display_millis;
   }
 }
