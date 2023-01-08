@@ -13,8 +13,13 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 int loop_counter = 0;
-int mic1_array[100000];
+int mic1_array[10000]; // 1000 seconds
+int mic1_index = 0;
+int mic2_array[10000]; // 1000 seconds
+int mic2_index = 0;
 int last_millis = millis();
+int mic1;
+int mic2;
 
 void DisplayTemp(){
   // This function reads the temp and humidity data
@@ -61,16 +66,21 @@ void setup()
 void loop() {
   if (millis() - last_millis >= 100) {
     last_millis -= 1000;
-    main();
+    main1();
   }
 }
 
-void main() // runs every 100 milliseconds exactly
+void main1() // runs every 100 milliseconds exactly
 {
   loop_counter += 1;
-  if (loop_counter == 20) {
+  if (loop_counter == 100) {
     loop_counter = 0;
     DisplayTemp();
   }
+  mic1 = get_microphone_1_boolean();
+  mic2 = get_microphone_2_boolean();
+  mic1_array[mic1_index] = mic1;
+  mic2_array[mic2_index] = mic2;
+
   //loop a few times getting mic data each time
 }
