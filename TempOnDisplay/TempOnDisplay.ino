@@ -71,7 +71,7 @@ bool get_microphone_2_boolean() {
   return mic2;
 }
 
-int count_in_array(bool array, bool item) {
+int count_in_array(bool array[], bool item) {
   // counts item in array
   int count = 0;
   for (int i = 0; i < sizeof(array); i += 1;) {
