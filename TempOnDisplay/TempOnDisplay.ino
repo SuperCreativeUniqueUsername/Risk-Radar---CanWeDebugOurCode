@@ -117,7 +117,7 @@ void setup()
 
 void loop() {
   if (millis() - last_millis >= 100) {
-    last_millis += 1000;
+    last_millis += 100;
     main1();
   }
 }
@@ -147,10 +147,12 @@ void main1() // runs every 100 milliseconds exactly
   mic2_array[mic2_index] = mic2;
   if (count_in_array(mic1_array, 1) >= 2) { // high dB warning after 2 polls
     DisplaySound(mic1, mic2);
-    current_display_millis += display_millis + millis();
+    current_display = 2;
+    current_display_millis += display_millis*2;
   }
   if (count_in_array(mic2_array, 1) >= 300) { // lower dB warning after 1/3 of the time of 5 minutes polls
     DisplaySound(mic1, mic2);
-    current_display_millis += display_millis + millis();
+    current_display = 2;
+    current_display_millis += display_millis*2;
   }
 }
