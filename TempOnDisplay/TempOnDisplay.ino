@@ -10,7 +10,7 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 int loop_counter = 0;
-bool mic1_array[600]; // 6 seconds
+bool mic1_array[200]; // 2 seconds
 int mic1_index = 0;
 bool mic2_array[1000]; // 10 seconds
 int mic2_index = 0;
@@ -100,6 +100,7 @@ int count_in_array(bool array[], bool item) {
 
 void setup() 
 {
+  Serial.begin(9600);
   // microphone 1
   pinMode(Digital_Input_mic1, INPUT);
   
@@ -128,17 +129,22 @@ void main1() // runs every 100 milliseconds exactly
   if (millis() - current_display_millis >= display_millis) {
     current_display_millis += display_millis;
     current_display += 1;
+    Serial.print("1\n");
     if (current_display > current_display_max) {
       current_display = 1; // skip intro screen
+      Serial.print("2\n");
     }
     if (current_display == 0) {
       DisplayIntro();
+      Serial.print("3\n");
     }
     else if (current_display == 1) {
       DisplayTemp();
+      Serial.print("4\n");
     }
     else if (current_display == 2) {
       DisplaySound(mic1, mic2);
+      Serial.print("5\n");
     }
   }
   mic1 = get_microphone_1_boolean();
@@ -149,10 +155,12 @@ void main1() // runs every 100 milliseconds exactly
     DisplaySound(mic1, mic2);
     current_display = 2;
     current_display_millis += display_millis*2;
+    Serial.print("6\n");
   }
   if (count_in_array(mic2_array, 1) >= 300) { // lower dB warning after 1/3 of the time of 5 minutes polls
     DisplaySound(mic1, mic2);
     current_display = 2;
     current_display_millis += display_millis*2;
+    Serial.print("7\n");
   }
 }
