@@ -22,6 +22,25 @@ const int current_display_max = 2;
 const int display_millis = 10000;
 int current_display_millis = millis();
 
+void DisplayIntro(){
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Risk Radar!");
+  lcd.setCursor(0, 1);
+  lcd.print("Workplace safety");
+  delay(3000);
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Made By Aiden,");
+  lcd.setCursor(0, 1);
+  lcd.print("Cedric and Griffin")
+  delay(1500);
+  lcd.scrollDisplayRight();
+  delay(500);
+  lcd.scrollDisplayRight();
+  delay(1500);
+}
+
 void DisplaySound(bool mic1, bool mic2)
 {
   lcd.clear();
@@ -100,7 +119,7 @@ void loop() {
     main1();
   }
 }
-
+//----------------------------------------------Main Function-------------------------------------
 void main1() // runs every 100 milliseconds exactly
 {
   loop_counter += 1; // unused?
