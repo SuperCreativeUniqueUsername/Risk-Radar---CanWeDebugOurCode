@@ -18,8 +18,8 @@ int mic1_index = 0;
 bool mic2_array[30000]; // 300 seconds
 int mic2_index = 0;
 int last_millis = millis();
-bool mic1;
-bool mic2;
+bool mic1; // mic 1 is 115dB
+bool mic2; // mic 2 is lower dB
 int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
 const int current_display_max = 2;
 int current_display_millis = millis();
@@ -59,7 +59,7 @@ bool get_microphone_2_boolean() {
 int count_in_array(bool array, bool item) {
   // counts item in array
   int count = 0;
-  for (int i = 0; i < sizeof(array); i += 1;) {
+  for (int i = 0; i < sizeof(array); i += 1) {
     if (array[i] == item) {
       count += 1;
     }
