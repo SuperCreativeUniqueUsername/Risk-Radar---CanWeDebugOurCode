@@ -2,9 +2,7 @@
 #include <dht.h>
 
 // example array
-int array[] = {
-  1, 2, 3, 4, 5
-};
+int array[1000];
 
 #define dht_pin A0
 
@@ -15,6 +13,8 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 int loop_counter = 0;
+int mic1_array[100000];
+int last_millis = millis();
 
 void DisplayTemp(){
   // This function reads the temp and humidity data
@@ -58,12 +58,19 @@ void setup()
   lcd.clear();
 }
 
-void loop() 
+void loop() {
+  if (millis() - last_millis >= 100) {
+    last_millis -= 1000;
+    main();
+  }
+}
+
+void main() // runs every 100 milliseconds exactly
 {
   loop_counter += 1;
   if (loop_counter == 20) {
     loop_counter = 0;
     DisplayTemp();
-  };
+  }
   //loop a few times getting mic data each time
 }
