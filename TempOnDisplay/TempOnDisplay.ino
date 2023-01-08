@@ -14,11 +14,11 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
-
 int loop_counter = 0;
 
 void DisplayTemp(){
-  
+  // This function reads the temp and humidity data
+  // and displays on the LCD
   DHT.read11(dht_pin);
   lcd.setCursor(0, 0);
   lcd.print("Hum = ");
@@ -26,7 +26,6 @@ void DisplayTemp(){
   lcd.print("%");
 
   lcd.setCursor(0, 1);
-  // Print a message to the LCD.
   lcd.print("Temp = ");
   lcd.print((int)DHT.temperature); 
   lcd.print(" C");
@@ -67,4 +66,9 @@ void loop()
     DisplayTemp();
   };
   //loop a few times getting mic data each time
+<<<<<<< Updated upstream
+=======
+  loop_counter += 1
+  DisplayTemp();
+>>>>>>> Stashed changes
 }
