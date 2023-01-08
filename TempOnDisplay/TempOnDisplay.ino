@@ -28,11 +28,18 @@ void DisplaySound(bool mic1, bool mic2)
 {
   lcd.clear();
   if (mic1 == True) {
-  
+  lcd.setCursor(0, 0);
+  lcd.print("Immidiate noise")
+  lcd.setCursor(0, 1):
+  lcd.print("risk!")
 } else if (mic2 == True) {
-  
+  lcd.setCursor(0, 0);
+  lcd.print("Long-term noise")
+  lcd.setCursor(0, 1):
+  lcd.print("risk!")
 } else {
-  
+  lcd.setCursor(0, 0);
+  lcd.print("No noise risk")
 }
   /* if mic1 is true
    *    print high danger message
