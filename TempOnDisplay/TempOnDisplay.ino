@@ -18,8 +18,11 @@ int mic1_index = 0;
 int mic2_array[30000]; // 300 seconds
 int mic2_index = 0;
 int last_millis = millis();
-int mic1;
-int mic2;
+bool mic1;
+bool mic2;
+int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
+const int current_display_max = 2
+int current_display_millis = millis();
 
 void DisplayTemp(){
   // This function reads the temp and humidity data
@@ -83,10 +86,22 @@ void loop() {
 
 void main1() // runs every 100 milliseconds exactly
 {
-  loop_counter += 1;
-  if (loop_counter == 100) {
-    loop_counter = 0;
-    DisplayTemp();
+  loop_counter += 1; // unused?
+  if (millis() - current_display_millis >= 10000) {
+    current_display_millis -= millis();
+    current_display += 1;
+    if (current_display > current_display_max) {
+      current_display = 1; // skip intro screen
+    }
+    if (current_display == 0) {
+      DisplayIntro(); // Griffin make this
+    }
+    else if (current_display == 1) {
+      DisplayTemp();
+    }
+    else if (current_display == 2) {
+      DisplayMic(); // Griffin make this
+    }
   }
   mic1 = get_microphone_1_boolean();
   mic2 = get_microphone_2_boolean();
@@ -94,7 +109,7 @@ void main1() // runs every 100 milliseconds exactly
   mic2_array[mic2_index] = mic2;
   if (count_in_array(mic1_array, 1) >= 2) {
     // output warning
-    
+
   }
   if (count_in_array(mic2_array, 1) >= 2) {
     // output more warning
