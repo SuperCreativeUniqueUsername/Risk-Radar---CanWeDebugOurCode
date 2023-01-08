@@ -66,9 +66,4 @@ void loop()
     DisplayTemp();
   };
   //loop a few times getting mic data each time
-<<<<<<< Updated upstream
-=======
-  loop_counter += 1
-  DisplayTemp();
->>>>>>> Stashed changes
 }
