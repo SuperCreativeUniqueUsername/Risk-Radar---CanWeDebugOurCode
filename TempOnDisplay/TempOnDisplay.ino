@@ -1,13 +1,15 @@
-// include the library code:
-//Test code to get things working copied from https://lastminuteengineers.com/arduino-1602-character-lcd-tutorial/
 #include <LiquidCrystal.h>
 #include <dht.h>
+
+#define dht_pin A0
+
 dht DHT;
 
-// Creates an LCD object. Parameters: (rs, enable, d4, d5, d6, d7)
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
-// Analog Pin A0 of Arduino is connected to DHT11 out pin
+int Digital_Input_mic1 = 7; // Digital output of the sensor
+int Digital_Input_mic2 = 8;
+
 #define dht_pin A0
 
 void DisplayTemp(){
@@ -29,9 +31,15 @@ void DisplayTemp(){
 
 void setup() 
 {
+  // microphone 1
+  pinMode(Digital_Input_mic1, INPUT);
+  
+  //microphone 2
+  pinMode(Digital_Input_mic2, INPUT);
+  
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-
+ 
   // Clears the LCD screen
   lcd.clear();
   lcd.setCursor(0, 0);
