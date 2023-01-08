@@ -21,6 +21,8 @@ int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
 const int current_display_max = 2;
 const int display_millis = 10000;
 int current_display_millis = millis();
+int mic1_cooldown = millis();
+int mic2_cooldown = millis();
 
 void DisplayIntro(){
   lcd.clear();
@@ -153,18 +155,28 @@ void main1() // runs every 100 milliseconds exactly
   }
   mic1 = get_microphone_1_boolean();
   mic2 = get_microphone_2_boolean();
-  mic1_array[mic1_index] = mic1; // fix mic indices
+  mic1_array[mic1_index] = mic1;
   mic2_array[mic2_index] = mic2;
-  if (count_in_array(mic1_array, 1) >= 2) { // high dB warning after 2 polls
+  mic1_index++;
+  mic2_index++;
+  if (mic1_index > 200) {
+    mic1_index = 0;
+  }
+  if (mic2_index > 1000) {
+    mic2_index = 0;
+  }
+  if (count_in_array(mic1_array, 1) >= 2 && millis() - mic1_cooldown >= 0) { // high dB warning after 2 polls
     DisplaySound(mic1, mic2);
     current_display = 2;
     current_display_millis += display_millis*2;
+    mic1_cooldown = millis() + display_millis*2;
     Serial.print("6\n");
   }
-  if (count_in_array(mic2_array, 1) >= 300) { // lower dB warning after 1/3 of the time of 5 minutes polls
+  if (count_in_array(mic2_array, 1) >= 300 && millis() - mic2_cooldown >= 0) { // lower dB warning after 1/3 of the time of 5 minutes polls
     DisplaySound(mic1, mic2);
     current_display = 2;
     current_display_millis += display_millis*2;
+    mic2_cooldown = millis() + display_millis*2;
     Serial.print("7\n");
   }
 }
