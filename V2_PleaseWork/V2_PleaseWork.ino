@@ -1,11 +1,10 @@
 #include <LiquidCrystal.h>
-#include <OneWire.h>
-#include <DallasTemperature.h>
+#include <dht.h>
 
-#define ONE_WIRE_BUS 7
+#define dht_pin 7
 
-OneWire oneWire(ONE_WIRE_BUS);
-DallasTemperature sensors(&oneWire);
+dht DHT;
+
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 int Digital_Input_mic1 = 8;
@@ -35,14 +34,15 @@ int Count_array(bool array[]) {
 void DisplayTemp(){
   // This function reads the temp
   // and displays on the LCD
-  sensors.requestTemperatures(); 
+  DHT.read11(dht_pin);
   lcd.setCursor(0, 1);
-  lcd.print((int)sensors.getTempCByIndex(0)); 
+  lcd.print(((int)DHT.temperature)); 
+  lcd.print((char)223);
   lcd.print(" C");
-  if (((int)sensors.getTempCByIndex(0)) > 26) {
+  if ((((int)DHT.temperature)) > 26) {
     lcd.print(" High Heat");
   }
-  else if  (((int)sensors.getTempCByIndex(0)) < -27) {
+  else if (((int)DHT.temperature) < -26) {
     lcd.print(" Frostbite Risk");
   }
   else {
@@ -55,7 +55,6 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
-  sensors.begin();
   
   // microphone 1
   pinMode(Digital_Input_mic1, INPUT);
@@ -92,7 +91,7 @@ void loop() {
       lcd.setCursor(0, 0);
       lcd.print("No Noise Risk");
       DisplayTemp();
-      delay(1000);
+      delay(1500);
     }
     }
   }
