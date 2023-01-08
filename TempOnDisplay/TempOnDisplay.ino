@@ -29,6 +29,18 @@ void DisplayTemp(){
   lcd.clear();
 }
 
+bool get_microphone_1_boolean() {
+  bool mic1
+  mic1 = (bool)digitalRead(Digital_Input_mic1)
+  return mic1
+}
+
+bool get_microphone_2_boolean() {
+  bool mic2
+  mic2 = (bool)digitalRead(Digital_Input_mic2)
+  return mic2
+}
+
 void setup() 
 {
   // microphone 1
@@ -44,7 +56,6 @@ void setup()
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("DHT11 Humidity");
-  //lcd.autoscroll();
   lcd.setCursor(0, 1);
   lcd.print("& temp Sensor");
   delay(8000);
