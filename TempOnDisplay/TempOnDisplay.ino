@@ -10,6 +10,23 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 // Analog Pin A0 of Arduino is connected to DHT11 out pin
 #define dht_pin A0
 
+void DisplayTemp(){
+  
+  DHT.read11(dht_pin);
+  lcd.setCursor(0, 0);
+  lcd.print("Hum = ");
+  lcd.print((int)DHT.humidity);
+  lcd.print("%");
+
+  lcd.setCursor(0, 1);
+  // Print a message to the LCD.
+  lcd.print("Temp = ");
+  lcd.print((int)DHT.temperature); 
+  lcd.print(" C");
+  delay(5000);
+  lcd.clear();
+}
+
 void setup() 
 {
   // set up the LCD's number of columns and rows:
@@ -28,18 +45,5 @@ void setup()
 
 void loop() 
 {
-  // Print a message to the LCD.
-  DHT.read11(dht_pin);
-  lcd.setCursor(0, 0);
-  lcd.print("Hum = ");
-  lcd.print((int)DHT.humidity);
-  lcd.print("%");
-
-  lcd.setCursor(0, 1);
-  // Print a message to the LCD.
-  lcd.print("Temp = ");
-  lcd.print((int)DHT.temperature); 
-  lcd.print(" C");
-  delay(5000);
-  lcd.clear();
+  DisplayTemp();
 }
