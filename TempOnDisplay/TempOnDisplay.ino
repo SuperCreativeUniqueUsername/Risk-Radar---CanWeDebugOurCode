@@ -22,6 +22,7 @@ bool mic1; // mic 1 is 115dB
 bool mic2; // mic 2 is lower dB
 int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
 const int current_display_max = 2;
+const int time_interval_screen = 10000;
 int current_display_millis = millis();
 
 void DisplaySound(mic1, mic2)
@@ -84,7 +85,7 @@ void setup()
 
 void loop() {
   if (millis() - last_millis >= 100) {
-    last_millis -= 1000;
+    last_millis += 1000;
     main1();
   }
 }
@@ -92,8 +93,8 @@ void loop() {
 void main1() // runs every 100 milliseconds exactly
 {
   loop_counter += 1; // unused?
-  if (millis() - current_display_millis >= 10000) {
-    current_display_millis -= millis();
+  if (millis() - current_display_millis >= time_interval_screen) {
+    current_display_millis += time_interval_screen;
     current_display += 1;
     if (current_display > current_display_max) {
       current_display = 1; // skip intro screen
@@ -114,10 +115,13 @@ void main1() // runs every 100 milliseconds exactly
   mic2_array[mic2_index] = mic2;
   if (count_in_array(mic1_array, 1) >= 2) {
     // output warning
-
+    DisplayMic();
+    current_display_millis += time_interval_screen;
   }
-  if (count_in_array(mic2_array, 1) >= 2) {
+  if (count_in_array(mic2_array, 1) >= time_interval_screen) {
     // output more warning
+    DisplayMic();
+    current_display_millis += time_interval_screen;
   }
 
   //loop a few times getting mic data each time
