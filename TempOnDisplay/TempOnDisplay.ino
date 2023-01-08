@@ -52,7 +52,7 @@ void setup()
   
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-  // hello
+  
   // Clears the LCD screen
   lcd.clear();
 }
