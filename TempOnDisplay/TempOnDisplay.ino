@@ -1,6 +1,10 @@
 #include <LiquidCrystal.h>
 #include <dht.h>
-#include <vector>
+
+// example array
+int array[] = {
+  1, 2, 3, 4, 5
+};
 
 #define dht_pin A0
 
@@ -31,15 +35,13 @@ void DisplayTemp(){
 }
 
 bool get_microphone_1_boolean() {
-  bool mic1
-  mic1 = (bool)digitalRead(Digital_Input_mic1)
-  return mic1
+  bool mic1 = digitalRead(Digital_Input_mic1);
+  return mic1;
 }
 
 bool get_microphone_2_boolean() {
-  bool mic2
-  mic2 = (bool)digitalRead(Digital_Input_mic2)
-  return mic2
+  bool mic2 = digitalRead(Digital_Input_mic2);
+  return mic2;
 }
 
 void setup() 
