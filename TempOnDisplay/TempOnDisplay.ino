@@ -29,19 +29,19 @@ void DisplaySound(bool mic1, bool mic2)
 {
   lcd.clear();
   if (mic1 == True) {
-  
+  lcd.setCursor(0, 0);
+  lcd.print("Immidiate noise")
+  lcd.setCursor(0, 1):
+  lcd.print("risk!")
 } else if (mic2 == True) {
-  
+  lcd.setCursor(0, 0);
+  lcd.print("Long-term noise")
+  lcd.setCursor(0, 1):
+  lcd.print("risk!")
 } else {
-  
+  lcd.setCursor(0, 0);
+  lcd.print("No noise risk")
 }
-  /* if mic1 is true
-   *    print high danger message
-   * elseif mic 2 is true
-   *    print low danger level
-   * else
-   *    print no danger level
-   */
 }
 
 void DisplayTemp(){
@@ -71,7 +71,7 @@ bool get_microphone_2_boolean() {
   return mic2;
 }
 
-int count_in_array(bool array[], bool item) {
+int count_in_array(bool array, bool item) {
   // counts item in array
   int count = 0;
   for (int i = 0; i < sizeof(array); i += 1;) {
