@@ -25,12 +25,12 @@ int current_display_millis = millis();
 void DisplaySound(bool mic1, bool mic2)
 {
   lcd.clear();
-  if (mic1 == True) {
+  if (mic1 == 1) {
   lcd.setCursor(0, 0);
   lcd.print("Immidiate noise")
   lcd.setCursor(0, 1):
   lcd.print("risk!")
-} else if (mic2 == True) {
+} else if (mic2 == 1) {
   lcd.setCursor(0, 0);
   lcd.print("Long-term noise")
   lcd.setCursor(0, 1):
