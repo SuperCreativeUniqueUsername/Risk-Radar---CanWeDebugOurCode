@@ -124,11 +124,11 @@ void main1() // runs every 100 milliseconds exactly
   mic2 = get_microphone_2_boolean();
   mic1_array[mic1_index] = mic1;
   mic2_array[mic2_index] = mic2;
-  if (count_in_array(mic1_array, 1) >= 2) {
+  if (count_in_array(mic1_array, 1) >= 2) { // high dB warning after 2 polls
     DisplayMic();
     current_display_millis += display_millis;
   }
-  if (count_in_array(mic2_array, 1) >= 10000) {
+  if (count_in_array(mic2_array, 1) >= 10000) { // lower dB warning after 1/3 of the time of 5 minutes polls
     DisplayMic();
     current_display_millis += display_millis;
   }
