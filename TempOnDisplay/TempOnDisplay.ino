@@ -27,17 +27,17 @@ void DisplaySound(bool mic1, bool mic2)
   lcd.clear();
   if (mic1 == 1) {
   lcd.setCursor(0, 0);
-  lcd.print("Immidiate noise")
-  lcd.setCursor(0, 1):
-  lcd.print("risk!")
+  lcd.print("Immidiate noise");
+  lcd.setCursor(0, 1);
+  lcd.print("risk!");
 } else if (mic2 == 1) {
   lcd.setCursor(0, 0);
-  lcd.print("Long-term noise")
-  lcd.setCursor(0, 1):
-  lcd.print("risk!")
+  lcd.print("Long-term noise");
+  lcd.setCursor(0, 1);
+  lcd.print("risk!");
 } else {
   lcd.setCursor(0, 0);
-  lcd.print("No noise risk")
+  lcd.print("No noise risk");
 }
 }
 
