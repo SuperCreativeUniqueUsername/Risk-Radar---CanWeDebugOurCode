@@ -13,9 +13,9 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 int loop_counter = 0;
-int mic1_array[10000]; // 1000 seconds
+int mic1_array[6000]; // 60 seconds
 int mic1_index = 0;
-int mic2_array[10000]; // 1000 seconds
+int mic2_array[30000]; // 300 seconds
 int mic2_index = 0;
 int last_millis = millis();
 int mic1;
@@ -94,6 +94,7 @@ void main1() // runs every 100 milliseconds exactly
   mic2_array[mic2_index] = mic2;
   if (count_in_array(mic1_array, 1) >= 2) {
     // output warning
+    
   }
   if (count_in_array(mic2_array, 1) >= 2) {
     // output more warning
