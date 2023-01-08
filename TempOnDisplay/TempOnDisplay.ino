@@ -63,6 +63,7 @@ void DisplaySound(bool mic1, bool mic2)
 void DisplayTemp(){
   // This function reads the temp and humidity data
   // and displays on the LCD
+  lcd.clear();
   DHT.read11(dht_pin);
   lcd.setCursor(0, 0);
   lcd.print("Hum = ");
@@ -74,7 +75,6 @@ void DisplayTemp(){
   lcd.print((int)DHT.temperature); 
   lcd.print(" C");
   delay(5000);
-  lcd.clear();
 }
 
 bool get_microphone_1_boolean() {
