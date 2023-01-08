@@ -143,7 +143,7 @@ void main1() // runs every 100 milliseconds exactly
   }
   mic1 = get_microphone_1_boolean();
   mic2 = get_microphone_2_boolean();
-  mic1_array[mic1_index] = mic1;
+  mic1_array[mic1_index] = mic1; // fix mic indices
   mic2_array[mic2_index] = mic2;
   if (count_in_array(mic1_array, 1) >= 2) { // high dB warning after 2 polls
     DisplaySound(mic1, mic2);
