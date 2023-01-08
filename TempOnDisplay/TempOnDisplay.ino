@@ -61,6 +61,10 @@ void setup()
 
 void loop() 
 {
+  loop_counter = loop_counter + 1;
+  if loop_counter == 20 {
+    loop_counter = 0;
+    DisplayTemp();
+  };
   //loop a few times getting mic data each time
-  DisplayTemp();
 }
