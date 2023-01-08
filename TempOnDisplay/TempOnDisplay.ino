@@ -48,6 +48,17 @@ bool get_microphone_2_boolean() {
   return mic2;
 }
 
+int count_in_array(array, item) {
+  // counts item in array
+  int count = 0;
+  for (int i = 0; i < sizeof(array); i += 1;) {
+    if (array[i] == item) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
 void setup() 
 {
   // microphone 1
@@ -81,6 +92,12 @@ void main1() // runs every 100 milliseconds exactly
   mic2 = get_microphone_2_boolean();
   mic1_array[mic1_index] = mic1;
   mic2_array[mic2_index] = mic2;
+  if (count_in_array(mic1_array, 1) >= 2) {
+    // output warning
+  }
+  if (count_in_array(mic2_array, 1) >= 2) {
+    // output more warning
+  }
 
   //loop a few times getting mic data each time
 }
