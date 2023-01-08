@@ -111,11 +111,13 @@ void setup()
 
   // Clears the LCD screen
   lcd.clear();
+
+  DisplayIntro();
 }
 
 void loop() {
   if (millis() - last_millis >= 100) {
-    last_millis -= 1000;
+    last_millis += 1000;
     main1();
   }
 }
