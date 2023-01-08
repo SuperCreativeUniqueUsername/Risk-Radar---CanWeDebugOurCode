@@ -7,10 +7,8 @@ dht DHT;
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
-int Digital_Input_mic1 = 7; // Digital output of the sensor
+int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
-
-#define dht_pin A0
 
 void DisplayTemp(){
   
@@ -64,5 +62,6 @@ void setup()
 
 void loop() 
 {
+  //loop a few times getting mic data each time
   DisplayTemp();
 }
