@@ -24,9 +24,16 @@ int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
 const int current_display_max = 2;
 int current_display_millis = millis();
 
-void DisplaySound(mic1, mic2)
+void DisplaySound(bool mic1, bool mic2)
 {
-  
+  lcd.clear();
+  /* if mic1 is true
+   *    print high danger message
+   * elseif mic 2 is true
+   *    print low danger level
+   * else
+   *    print no danger level
+   */
 }
 
 void DisplayTemp(){
