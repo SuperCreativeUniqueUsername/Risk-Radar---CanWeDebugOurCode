@@ -15,18 +15,7 @@ bool get_microphone_1_boolean() {
   bool mic1 = digitalRead(Digital_Input_mic1);
   return mic1;
 }
-
-bool Count_array(bool array[]) {
-  int count = 0;
-  for (int i = 0; i < sizeof(array); i++) {
-    if (array[i] == 1) {
-      count++;
-      if (count > 100){
-        return true;   
-      }
-  }
-}
-}
+//counter insmt working
 
 void setup() {
   
@@ -41,6 +30,9 @@ void setup() {
 
   // Clears the LCD screen
   lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Code Starts!");
+  delay(500);
   
 }
 
@@ -49,19 +41,24 @@ void loop() {
   mic1 = get_microphone_1_boolean();
   mic1_array[mic1_index] = mic1;
   mic1_index++;
+  Serial.print((Count_array(mic1_array)));
+  Serial.println((mic1));
+  if (Count_array(mic1_array)) {
+    Serial.print("-----GoodJob-----");
+    delay(1000);
+  }
   if (mic1_index > 1000) {
     mic1_index = 0;
     if (Count_array(mic1_array)) {
       lcd.clear();
       lcd.setCursor(0, 0);
-      lcd.print("Danger!"); 
-      delay(500);
+      lcd.print("Danger!");
+      delay(1000);
       }
     else {
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print("Good!");
-      delay(500);
     }
     }
   }
