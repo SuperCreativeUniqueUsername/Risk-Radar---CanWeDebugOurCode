@@ -77,7 +77,7 @@ bool get_microphone_2_boolean() {
   return mic2;
 }
 
-int count_in_array(bool array, bool item) {
+int count_in_array(bool array[], bool item) {
   // counts item in array
   int count = 0;
   for (int i = 0; i < sizeof(array); i += 1;) {
@@ -137,7 +137,7 @@ void main1() // runs every 100 milliseconds exactly
     // output warning
 
   }
-  if (count_in_array(mic2_array, 1) >= 2) {
+  if (count_in_array(mic2_array, 1) >= 10000) {
     // output more warning
   }
 
