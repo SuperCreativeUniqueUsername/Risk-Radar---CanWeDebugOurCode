@@ -13,15 +13,15 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 int loop_counter = 0;
-int mic1_array[6000]; // 60 seconds
+bool mic1_array[6000]; // 60 seconds
 int mic1_index = 0;
-int mic2_array[30000]; // 300 seconds
+bool mic2_array[30000]; // 300 seconds
 int mic2_index = 0;
 int last_millis = millis();
 bool mic1;
 bool mic2;
 int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
-const int current_display_max = 2
+const int current_display_max = 2;
 int current_display_millis = millis();
 
 void DisplayTemp(){
@@ -51,7 +51,7 @@ bool get_microphone_2_boolean() {
   return mic2;
 }
 
-int count_in_array(array, item) {
+int count_in_array(bool array, bool item) {
   // counts item in array
   int count = 0;
   for (int i = 0; i < sizeof(array); i += 1;) {
