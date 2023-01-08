@@ -55,12 +55,6 @@ void setup()
  
   // Clears the LCD screen
   lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("DHT11 Humidity");
-  lcd.setCursor(0, 1);
-  lcd.print("& temp Sensor");
-  delay(8000);
-  lcd.clear();
 }
 
 void loop() 
