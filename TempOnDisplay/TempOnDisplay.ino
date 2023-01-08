@@ -14,15 +14,15 @@ bool mic1_array[200]; // 2 seconds
 int mic1_index = 0;
 bool mic2_array[1000]; // 10 seconds
 int mic2_index = 0;
-int last_millis = millis();
+long last_millis = millis();
 bool mic1;
 bool mic2;
 int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
 const int current_display_max = 2;
 const int display_millis = 10000;
-int current_display_millis = millis();
-int mic1_cooldown = millis();
-int mic2_cooldown = millis();
+long current_display_millis = millis();
+long mic1_cooldown = millis();
+long mic2_cooldown = millis();
 
 void DisplayIntro(){
   lcd.clear();
