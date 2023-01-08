@@ -1,9 +1,6 @@
 #include <LiquidCrystal.h>
 #include <dht.h>
 
-// example array
-int array[1000];
-
 #define dht_pin A0
 
 dht DHT;
