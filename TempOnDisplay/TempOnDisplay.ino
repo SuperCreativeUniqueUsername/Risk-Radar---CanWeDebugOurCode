@@ -24,6 +24,10 @@ int current_display = 0; // 0: intro, 1: temp/humid, 2: microphone
 const int current_display_max = 2
 int current_display_millis = millis();
 
+void DisplaySound(){
+  
+}
+
 void DisplayTemp(){
   // This function reads the temp and humidity data
   // and displays on the LCD
