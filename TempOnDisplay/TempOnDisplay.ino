@@ -15,6 +15,8 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 int Digital_Input_mic1 = 7;
 int Digital_Input_mic2 = 8;
 
+int loop_counter = 0;
+
 void DisplayTemp(){
   
   DHT.read11(dht_pin);
@@ -52,7 +54,7 @@ void setup()
   
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-  
+
   // Clears the LCD screen
   lcd.clear();
 }
