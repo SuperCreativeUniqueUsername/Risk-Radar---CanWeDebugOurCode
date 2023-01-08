@@ -34,11 +34,11 @@ void DisplayIntro(){
   lcd.print("Made By Aiden,");
   lcd.setCursor(0, 1);
   lcd.print("Cedric and Griffin");
-  delay(1500);
-  lcd.scrollDisplayRight();
-  delay(500);
-  lcd.scrollDisplayRight();
-  delay(1500);
+  delay(2000);
+  lcd.scrollDisplayLeft();
+  delay(700);
+  lcd.scrollDisplayLeft();
+  delay(2000);
 }
 
 void DisplaySound(bool mic1, bool mic2)
